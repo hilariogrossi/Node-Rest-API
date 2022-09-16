@@ -1,5 +1,6 @@
 const { Router } = require('express');
 const { TodosRepository } = require('./repository');
+const logger = require('../middlewares/logger');
 
 // ** TODOS **
 const todosRepository = TodosRepository();
@@ -10,6 +11,7 @@ const NotFound = {
 };
 
 const router = Router();
+router.use(logger);
 
 // GET /todos/:id
 router.get('/:id', async (req, res) => {
